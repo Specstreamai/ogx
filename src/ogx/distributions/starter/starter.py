@@ -37,6 +37,7 @@ from ogx.providers.remote.tool_runtime.brave_search.config import BraveSearchToo
 from ogx.providers.remote.tool_runtime.exa_search.config import ExaSearchToolConfig
 from ogx.providers.remote.tool_runtime.nimble_search.config import NimbleSearchToolConfig
 from ogx.providers.remote.tool_runtime.serply_search.config import SerplySearchToolConfig
+from ogx.providers.remote.tool_runtime.specstream_search.config import SpecStreamSearchToolConfig
 from ogx.providers.remote.tool_runtime.tavily_search.config import TavilySearchToolConfig
 from ogx.providers.remote.vector_io.chroma.config import ChromaVectorIOConfig
 from ogx.providers.remote.vector_io.elasticsearch.config import ElasticsearchVectorIOConfig
@@ -161,6 +162,7 @@ def get_distribution_template(name: str = "starter") -> DistributionTemplate:
             BuildProvider(provider_type="remote::tavily-search"),
             BuildProvider(provider_type="remote::nimble-search"),
             BuildProvider(provider_type="remote::serply-search"),
+            BuildProvider(provider_type="remote::specstream-search"),
             BuildProvider(provider_type="inline::file-search"),
             BuildProvider(provider_type="remote::model-context-protocol"),
         ],
@@ -306,6 +308,11 @@ def get_distribution_template(name: str = "starter") -> DistributionTemplate:
                 provider_id="serply-search",
                 provider_type="remote::serply-search",
                 config=SerplySearchToolConfig.sample_run_config(f"~/.ogx/distributions/{name}"),
+            ),
+            Provider(
+                provider_id="specstream-search",
+                provider_type="remote::specstream-search",
+                config=SpecStreamSearchToolConfig.sample_run_config(f"~/.ogx/distributions/{name}"),
             ),
             Provider(
                 provider_id="file-search",

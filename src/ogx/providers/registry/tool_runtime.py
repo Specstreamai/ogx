@@ -114,6 +114,17 @@ def available_providers() -> list[ProviderSpec]:
         ),
         RemoteProviderSpec(
             api=Api.tool_runtime,
+            adapter_type="specstream-search",
+            provider_type="remote::specstream-search",
+            module="ogx.providers.remote.tool_runtime.specstream_search",
+            config_class="ogx.providers.remote.tool_runtime.specstream_search.config.SpecStreamSearchToolConfig",
+            pip_packages=[],
+            provider_data_validator="ogx.providers.remote.tool_runtime.specstream_search.SpecStreamSearchToolProviderDataValidator",
+            toolgroup_id="builtin::websearch",
+            description="SpecStream Search tool for web search via the SpecStream Search API.",
+        ),
+        RemoteProviderSpec(
+            api=Api.tool_runtime,
             adapter_type="model-context-protocol",
             provider_type="remote::model-context-protocol",
             module="ogx.providers.remote.tool_runtime.model_context_protocol",
